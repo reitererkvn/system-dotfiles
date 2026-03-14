@@ -1,0 +1,10 @@
+[Unit]
+Description=HDD Stop Timer
+
+[Timer]
+# Feuert exakt 1 Minute nach dem Erreichen des Boot-Status
+OnBootSec=5
+Unit=hdd-spindown.service
+
+[Install]
+WantedBy=timers.target
