@@ -43,7 +43,6 @@ echo "[+] Phase 2: Starte Cloud-Backup (Restic) von HDD..."
 # ==============================================================================
 # OPTIMIERTE UMGEBUNG (Injektion der High-Performance Parameter)
 # ==============================================================================
-export RCLONE_CONFIG="/etc/rclone/rclone.conf"
 export LD_PRELOAD="/usr/lib/libmimalloc.so"
 
 echo "[+] Starte Restic Backup..."
@@ -58,7 +57,7 @@ sleep 2
 CLOUD_DEST="rclone:gdrive:backups/homeserver_restic_repo"
 HDD_DEST="/mnt/HDD-01/backups"
 RESTIC_PASS="/root/.restic_pass"
-RCLONE_CONF="serve restic --stdio --tpslimit 8 --tpslimit-burst 8 --config /etc/rclone/rclone.conf"
+RCLONE_CONF="serve restic --stdio --tpslimit 8 --tpslimit-burst 8"
 
 upload_daily() {
     local source_system=$1
