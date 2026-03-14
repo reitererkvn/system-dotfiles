@@ -1,0 +1,32 @@
+# ~/.editorconfig
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Web-Technologien (Standard: 2 Spaces für bessere Übersicht)
+[*.{css,scss,html,htm,js,jsx,ts,tsx}]
+indent_size = 2
+
+# Konfigurationsdateien
+[*.{json,yaml,yml,toml}]
+indent_size = 2
+
+# Python (Strikte 4-Space Regel nach PEP 8)
+[*.py]
+indent_style = space
+indent_size = 4
+
+# Makefiles (MÜSSEN Hard-Tabs haben!)
+[Makefile]
+indent_style = tab
+indent_size = 8
+
+# Markdown
+[*.md]
+trim_trailing_whitespace = false

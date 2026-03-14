@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SRC="/opt/system-dotfiles"
-DEST="/" 
+DEST="/"
 DEST="${DEST%/}"  # removes "/" at end
 
 if [ "$EUID" -ne 0 ]; then
@@ -35,12 +35,12 @@ find "$SRC" -mindepth 1 -name ".git" -prune -o -type d -printf '%P\n' | while re
 done
 
 # ==========================================
-# PHASE 2: I/O-Mapping (Kopieren statt Verlinken)
+# PHASE 2: I/O-Mapping (Kopieren statt Verlinken, Ignoriert .git, README.md, LIECENSE, .editorconfig)
 # ==========================================
-find "$SRC" -mindepth 1 -name ".git" -prune -o -type f -printf '%P\n' | while read -r relative_file; do
+find "$SRC" -mindepth 1 \( -name ".git" -o -name "REAME.md" -o -name "LICENSE" -o -name ".editorconfig" \) -prune -o -type f -printf '%P\n' | while read -r relative_file; do
     source_file="$SRC/$relative_file"
     target_file="$DEST/$relative_file"
-    
+
     # Kopiere Datei
     # -p = bewahrt Berechtigungen (wichtig für /etc)
     cp -p "$source_file" "$target_file"
