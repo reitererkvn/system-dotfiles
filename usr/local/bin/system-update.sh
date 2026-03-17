@@ -23,16 +23,20 @@ echo "========================================"
 echo " SYSTEM UPDATE INITIATED"
 echo "========================================"
 
-# Schritt 1: System-Kern (Pacman)
-echo ">>> [1/3] Aktualisiere System-Basis (Core Repositories)..."
-sudo pacman -Syu
+# Schritt 2: System-Kern (Pacman)
+echo ">>> [1/4] Aktualisiere Keyrings"
+sudo pacman -Sy archlinux-keyring cachyos-keyring
 
-# Schritt 2: Community & KI-Tools (AUR)
-echo ">>> [2/3] Aktualisiere externe Module (AUR)..."
-yay -Sua
+# Schritt 2: System-Kern (Pacman)
+echo ">>> [2/4] Aktualisiere System-Basis (Core Repositories)..."
+sudo pacman -Syyu
 
-# Schritt 3: Speichermanagement (Verbose Analyse & Ausführung)
-echo ">>> [3/3] System-Diagnose für Speichermanagement..."
+# Schritt 3: Community & KI-Tools (AUR)
+echo ">>> [3/4] Aktualisiere externe Module (AUR)..."
+paru -Sua
+
+# Schritt 4: Speichermanagement (Verbose Analyse & Ausführung)
+echo ">>> [4/4] System-Diagnose für Speichermanagement..."
 
 if [[ $CLEANUP_MODE -eq 1 ]]; then
     echo ">>> Override-Signal (-c) detektiert. Überspringe Diagnose."
