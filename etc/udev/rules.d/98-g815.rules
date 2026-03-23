@@ -1,0 +1,2 @@
+# Erlaubt der Gruppe 'input' Schreibzugriff auf Logitech HID-Geräte
+KERNEL=="hidraw*", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c33f", MODE="0660", GROUP="input"
