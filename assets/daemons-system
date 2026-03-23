@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Set daemons to ensure background services run stable and isolated
+
+export HDD_SPINDOWN="hdd-spindown.service"
+export HDD_SPINDOWNT="hdd-spindown.timer"
+export PACCACHE="paccache.service"
+export PACCACHET="paccache.timer"
+export BACKUP="snapshot-backup.service"
+export BACKUPT="snapshot-backup.timer"
